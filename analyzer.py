@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 import os
 
 class Analyzer:
-    def __init__(self, file_object = None, delta = 10, nb_filtre = 0, file_name = '', show = True):
+    def __init__(self, file_object = None, delta = 10, nb_filtre = 0, file_name = '', show = True, nb_neighbors = 0):
         self.show = show
+        self.nb_neighbors = nb_neighbors
         self.nb_filtre = nb_filtre
         self.delta = delta
         self.coefficient_scalaire = 1/(self.delta*np.sqrt(2*np.pi))
@@ -143,7 +144,7 @@ class Analyzer:
 
                 plt.xlabel('Probabilités en %')
                 plt.ylabel('Nombre de survivants')
-                plt.title('Nombre de survivants à la fin de l\'épidemie')
+                plt.title('Nombre de survivants à la fin de l\'épidemie avec '+str(self.nb_neighbors)+' voisins')
                 plt.legend();
                 plt.show()
         return middle/10
